@@ -1,0 +1,38 @@
+# 合并进 configuration.yaml 时使用（不要重复顶层 key）
+# 将 media_player.tcl_75t7l 替换为你的电视实体 ID
+
+script:
+  tv_power_on:
+    alias: "电视开机"
+    sequence:
+      - service: media_player.turn_on
+        target:
+          entity_id: media_player.tcl_75t7l
+
+  tv_power_off:
+    alias: "电视关机"
+    sequence:
+      - service: media_player.turn_off
+        target:
+          entity_id: media_player.tcl_75t7l
+
+  tv_volume_30:
+    alias: "电视音量 30%"
+    sequence:
+      - service: media_player.volume_set
+        target:
+          entity_id: media_player.tcl_75t7l
+        data:
+          volume_level: 0.3
+
+  tv_hdmi1:
+    alias: "电视切到 HDMI1"
+    sequence:
+      - service: media_player.select_source
+        target:
+          entity_id: media_player.tcl_75t7l
+        data:
+          source: "HDMI1"
+
+# 启动应用：不同集成差异大，若报错请改用开发者工具中实际支持的服务
+# 例如部分环境用 play_media 或 select_source 选应用名

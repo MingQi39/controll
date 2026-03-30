@@ -2,6 +2,10 @@
 
 在家里的电脑上按顺序做即可。本文假设你有一台**常开**的电脑或树莓派，能装 Docker，且音箱通过**蓝牙**连在这台机器上。
 
+**其它场景（同一套 Docker，可单独看）：**
+
+- **只想用手机遥控 TCL 电视、代替遥控器**（不要灯、不要自动化）：请看 **[README-TCL-TV.md](./README-TCL-TV.md)**。
+
 ---
 
 ## 你要实现什么
@@ -204,8 +208,10 @@ automation: !include automations.yaml
 | `docker-compose.yml` | 一键启动 HA 的 Compose 文件 |
 | `homeassistant-config/` | 映射到容器 `/config` 的配置根目录 |
 | `homeassistant-config/examples/` | 可复制合并的 YAML 片段 |
-| `examples/automations.yaml.example` | 可改名为 `automations.yaml` 的完整列表示例（需配合 `configuration.yaml` 里的 `!include`） |
-| `README.md` | 本说明 |
+| `homeassistant-config/examples/automations.yaml.example` | 可改名为 `automations.yaml` 的完整列表示例（需配合 `configuration.yaml` 里的 `!include`） |
+| `homeassistant-config/examples/tcl_tv_scripts.snippet.yaml` | TCL 电视脚本示例（需配合 [README-TCL-TV.md](./README-TCL-TV.md)） |
+| `README.md` | 米家灯 + Bose 主说明 |
+| `README-TCL-TV.md` | 手机遥控 TCL 电视（无联动） |
 
 **说明**：本仓库是**步骤说明 + 配置片段**，不包含真实 token、也不替你跑 Docker。第一次启动 HA 后，`configuration.yaml` 可能由向导生成，请**把 `examples` 里的段落合并进去**，不要无脑覆盖整文件。
 
