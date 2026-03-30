@@ -1,0 +1,20 @@
+# 将下列片段合并进 configuration.yaml（不要重复顶层的 key）
+# 若已有 shell_command / script / light，应合并到同一层级下而不是复制多份顶层
+
+shell_command:
+  # aplay 常见为 WAV；若坚持用 MP3，需换 ffplay/mpg123 等命令
+  play_bose: "aplay /config/test.wav"
+
+script:
+  play_music:
+    sequence:
+      - service: shell_command.play_bose
+
+# 方式 A：米家灯局域网直连（需设备 IP + token）
+light:
+  - platform: xiaomi_miio
+    name: "餐厅灯"
+    host: 192.168.1.20
+    token: "请替换为32位十六进制token"
+
+# 实体 ID 可能是 light.can_ting_deng 等，以 HA「开发者工具 → 状态」为准

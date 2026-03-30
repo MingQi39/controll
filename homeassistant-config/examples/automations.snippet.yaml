@@ -1,0 +1,15 @@
+# Home Assistant 新版推荐：在 UI「设置 → 自动化与场景」里创建，
+# 或在本文件使用「列表」格式（无 automation: 前缀），取决于你的 configuration.yaml 是否 include
+
+# 若 configuration.yaml 里有：automation: !include automations.yaml
+# 则下面直接写列表（注意 YAML 列表以 - 开头）：
+
+- alias: "餐厅灯打开播放音乐"
+  trigger:
+    - platform: state
+      entity_id: light.dining_room
+      to: "on"
+  action:
+    - service: script.play_music
+
+# 把 light.dining_room 改成你在「开发者工具 → 状态」里看到的真实 entity_id

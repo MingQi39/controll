@@ -1,0 +1,12 @@
+# 使用步骤：
+# 1. 在 configuration.yaml 中加入：automation: !include automations.yaml
+# 2. 把本文件复制到配置目录根下，命名为 automations.yaml（不要带 .example）
+# 3. 把下面的 light.dining_room 改成你在 HA 里看到的真实 entity_id
+
+- alias: "餐厅灯打开播放音乐"
+  trigger:
+    - platform: state
+      entity_id: light.dining_room
+      to: "on"
+  action:
+    - service: script.play_music

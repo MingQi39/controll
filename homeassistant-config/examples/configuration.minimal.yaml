@@ -1,0 +1,22 @@
+# 最小示例：首次若目录里没有 configuration.yaml，可复制为 configuration.yaml 再按需改。
+# Home Assistant 可能已自带 default_config 等，若与官方生成内容冲突，请合并而非覆盖整文件。
+
+default_config:
+
+# 若使用独立 automations.yaml，取消下一行注释：
+# automation: !include automations.yaml
+
+shell_command:
+  play_bose: "aplay /config/test.wav"
+
+script:
+  play_music:
+    sequence:
+      - service: shell_command.play_bose
+
+# 米家灯（局域网）— token 请换成真实值，不要用示例
+light:
+  - platform: xiaomi_miio
+    name: "餐厅灯"
+    host: 192.168.1.20
+    token: "请替换为32位十六进制token"

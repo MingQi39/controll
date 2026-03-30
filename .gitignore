@@ -1,0 +1,4 @@
+# Home Assistant 运行时会产生大量本地文件，若日后用 git 可忽略
+homeassistant-config/*
+!homeassistant-config/README-config-folder.md
+!homeassistant-config/examples/

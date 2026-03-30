@@ -1,0 +1,16 @@
+# Home Assistant 本地运行（Docker Compose）
+# 在家里的电脑上：先改下面的路径，再执行 docker compose up -d
+# 详见项目根目录 README.md
+
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: unless-stopped
+    ports:
+      - "8123:8123"
+    volumes:
+      # ⚠️ 改成你电脑上的真实目录，例如 Windows: D:\homeassistant\config
+      - ./homeassistant-config:/config
+    # 若要让容器内能调用宿主机的蓝牙/音频，需额外配置（见 README「蓝牙与 Docker」章节）
+    # network_mode: host  # 部分场景可选，与端口映射二选一，新手先不要开

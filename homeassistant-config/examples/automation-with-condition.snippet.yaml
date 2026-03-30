@@ -1,0 +1,15 @@
+# 可选：带条件与延迟的自动化示例（合并进 automations.yaml 列表）
+
+- alias: "餐厅灯打开播放音乐（防重复 + 延迟）"
+  trigger:
+    - platform: state
+      entity_id: light.dining_room
+      to: "on"
+  condition:
+    # 若你没有 media_player.bose，请删掉整个 condition 块或改成你有的实体
+    - condition: state
+      entity_id: media_player.bose
+      state: "off"
+  action:
+    - delay: "00:00:02"
+    - service: script.play_music
